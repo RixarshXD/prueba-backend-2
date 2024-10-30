@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Pacientes, Doctor, Cita
-from ..pacientesApp.forms import FormPacientes
+from .models import Cita
+
 
 # Create your views here.
 

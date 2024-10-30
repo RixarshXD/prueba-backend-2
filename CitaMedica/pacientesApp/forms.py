@@ -1,5 +1,5 @@
 from django import forms
-from ..citasMedicasApp.models import Pacientes
+from .models import Pacientes
 
 
 class FormPacientes(forms.ModelForm):

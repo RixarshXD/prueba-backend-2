@@ -7,7 +7,7 @@ from .forms import FormPacientes
 def listadoPacientes(request):
     pacientes = Pacientes.objects.all()
     data = {'pacientes': pacientes}
-    return render(request,'listadoPacientes.html',data)
+    return render(request,'Pacientes/listadoPacientes.html',data)
 
 def registroPacientes(request):
     form = FormPacientes()
@@ -17,13 +17,13 @@ def registroPacientes(request):
             form.save()
             return listadoPacientes(request)
     data = {'form': form}
-    return render(request,'registroPacientes.html',data)
+    return render(request,'Pacientes/registrarPacientes.html',data)
 
 
 def eliminarPacientes(request,id):
     pacientes = Pacientes.objects.get(id = id)
     pacientes.delete()
-    return redirect('/listadoPacientes')
+    return redirect('Pacientes/listadoPacientes')
 
 
 def actualizarPacientes(request,id):
@@ -35,4 +35,4 @@ def actualizarPacientes(request,id):
             form.save()
             return listadoPacientes(request)
     data = {'form': form}
-    return render(request,'registroPacientes.html',data)
+    return render(request,'Pacientes/registroPacientes.html',data)
