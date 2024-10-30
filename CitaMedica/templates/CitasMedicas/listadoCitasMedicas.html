@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="table-responsive">
+        {% if cita %}
+        <table class="table table-primary">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Fecha Cita</th>
+                    <th scope="col">Diagnostico</th>
+                    <th scope="col">Hora Cita</th>
+                    <th scope="col">Motivo</th>
+                    <th scope="col">Obsevacion</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for cita in cita %}
+                <tr>
+                    <td>{{cita.id}}</td>
+                    <td>{{cita.fechaCita}}</td>
+                    <td>{{cita.diagnostico}}</td>
+                    <td>{{cita.horaCita}}</td>
+                    <td>{{cita.motivo}}</td>
+                    <td>{{cita.observacion}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="alert alert-info">No hay citas registradas</div>
+        {% endif %}
+
+        <a href="../">volver</a>
+        <a href="{% url 'registro' %}">agregar registro</a>
+    </div>
+</body>
+
+</html>
