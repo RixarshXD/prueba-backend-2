@@ -26,7 +26,7 @@ def eliminarPacientes(request,id):
     return redirect('Pacientes/listadoPacientes')
 
 
-def actualizarPacientes(request,id):
+def modificarPaciente(request,id):
     pacientes = Pacientes.objects.get(id=id)
     form = FormPacientes(instance=pacientes)
     if request.method == 'POST':
@@ -35,4 +35,4 @@ def actualizarPacientes(request,id):
             form.save()
             return listadoPacientes(request)
     data = {'form': form}
-    return render(request,'Pacientes/registroPacientes.html',data)
+    return render(request,'Pacientes/registrarPacientes.html',data)
