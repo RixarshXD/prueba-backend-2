@@ -12,8 +12,21 @@ class FormCitas(forms.ModelForm):
                 attrs={'class': 'form-control',
                        'type': 'time',
                        'placeholder': 'Hora de la cita'}),
+            
             'fechaCita': forms.DateInput(
                     attrs={'class': 'form-control',
                            'type': 'date',
-                           'placeholder': 'Fecha de la cita'}),
+                           'initial': '31-12-2024'}),
+            
+            'diagnostico': forms.TextInput(
+                    attrs={'class': 'form-control',
+                           'placeholder': 'Diagnostico'}),
+            
+            'motivo': forms.TextInput(
+                    attrs={'class': 'form-control',
+                           'placeholder': 'Motivo de la cita'}),
+            
+            'observacion': forms.TextInput(
+                    attrs={'class': 'form-control',
+                           'placeholder': 'Observaciones'}),
         }
