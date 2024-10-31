@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 
-  <body>
-    {% extends "index.html" %} {% block content %}
-    <div class="alert alert-info text-center">Listado de Citas</div>
-    <div class="table-responsive">
-      {% if cita %}
-      <table class="table table-primary">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Fecha Cita</th>
-            <th scope="col">Diagnostico</th>
-            <th scope="col">Hora Cita</th>
-            <th scope="col">Motivo</th>
-            <th scope="col">Obsevacion</th>
-          </tr>
-        </thead>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+</head>
 
-        <tbody>
-          {% for cita in cita %}
-          <tr>
-            <td>{{cita.id}}</td>
-            <td>{{cita.fechaCita}}</td>
-            <td>{{cita.diagnostico}}</td>
-            <td>{{cita.horaCita}}</td>
-            <td>{{cita.motivo}}</td>
-            <td>{{cita.observacion}}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      {% else %}
-      <div class="alert alert-info">No hay citas registradas</div>
-      {% endif %}
+<body>
+  {% extends "index.html" %} {% block content %}
+  <div class="alert alert-info text-center">Listado de Citas</div>
+  <div class="table-responsive">
+    {% if cita %}
+    <table class="table table-primary">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Fecha Cita</th>
+          <th scope="col">Diagnostico</th>
+          <th scope="col">Hora Cita</th>
+          <th scope="col">Motivo</th>
+          <th scope="col">Obsevacion</th>
 
-      <a href="../">volver</a>
-      <a href="{% url 'registro/citas' %}">agregar registro</a>
-    </div>
+          <th scope="col"> </th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
 
-    {% endblock %}
-  </body>
+      <tbody>
+        {% for cita in cita %}
+        <tr>
+          <td>{{cita.id}}</td>
+          <td>{{cita.fechaCita}}</td>
+          <td>{{cita.diagnostico}}</td>
+          <td>{{cita.horaCita}}</td>
+          <td>{{cita.motivo}}</td>
+          <td>{{cita.observacion}}</td>
+
+          <td> <a href="/citas/actualizarCita/{{ cita.id }}" class="btn btn-success">Modificar</a> </td>
+          <td> <a href="/citas/eliminarCita/{{ cita.id }}" class="btn btn-danger">Eliminar</a> </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-info">No hay citas registradas</div>
+    {% endif %}
+
+    <a href="../">volver</a>
+    <a href="{% url 'registro/citas' %}">agregar registro</a>
+  </div>
+
+  {% endblock %}
+</body>
+
 </html>

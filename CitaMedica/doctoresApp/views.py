@@ -23,7 +23,7 @@ def registrarDoctores(request):
 def eliminarDoctores(request, id):
     doctores = Doctor.objects.get(id = id)
     doctores.delete()
-    return redirect('Doctores/listadoDoctores.html')
+    return redirect('ListaDoctores')
 
 def actualizarDoctores(request, id):
     doctores = Doctor.objects.get(id=id)

@@ -1,55 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
 
-  <body>
-    {% extends "index.html" %} {% block content %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
 
-    <div class="alert alert-info text-center">Listado de Doctores</div>
-    <div class="table-responsive">
-      {% if doctores %}
+<body>
+  {% extends "index.html" %} {% block content %}
 
-      <table class="table table-primary">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Rut</th>
-            <th scope="col">Fecha de Nacimiento</th>
-            <th scope="col">Correo</th>
-          </tr>
-        </thead>
+  <div class="alert alert-info text-center">Listado de Doctores</div>
+  <div class="table-responsive">
+    {% if doctores %}
 
-        <tbody>
-          {% for doctor in doctores %}
+    <table class="table table-primary">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Rut</th>
+          <th scope="col">Fecha de Nacimiento</th>
+          <th scope="col">Correo</th>
+          <th> </th>
+          <th> </th>
+        </tr>
+      </thead>
 
-          <tr class="">
-            <td>{{doctor.id}}</td>
-            <td>{{doctor.nombre}}</td>
-            <td>{{doctor.apellido}}</td>
-            <td>{{doctor.rut}}</td>
-            <td>{{doctor.fechaNacimiento}}</td>
-            <td>{{doctor.correo}}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      <tbody>
+        {% for doctor in doctores %}
 
-      {% else %}
+        <tr class="">
+          <td>{{doctor.id}}</td>
+          <td>{{doctor.nombre}}</td>
+          <td>{{doctor.apellido}}</td>
+          <td>{{doctor.rut}}</td>
+          <td>{{doctor.fechaNacimiento}}</td>
+          <td>{{doctor.correo}}</td>
 
-      <div class="alert alert-info">No hay doctores registrados</div>
+          <td> <a href="/doctores/actualizarDoctor/{{ doctor.id }}" class="btn btn-success">Modificar</a> </td>
+          <td> <a href="/doctores/eliminarDoctor/{{ doctor.id }}" class="btn btn-danger">Eliminar</a> </td>
 
-      {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
-      <a href="../">volver</a>
-      <a href="{% url 'registro/doctores' %}">agregar registro</a>
-    </div>
+    {% else %}
 
-    {% endblock %}
-  </body>
+    <div class="alert alert-info">No hay doctores registrados</div>
+
+    {% endif %}
+
+    <a href="../">volver</a>
+    <a href="{% url 'registro/doctores' %}">agregar registro</a>
+  </div>
+
+  {% endblock %}
+</body>
+
 </html>

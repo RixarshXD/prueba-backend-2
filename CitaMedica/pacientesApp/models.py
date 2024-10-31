@@ -7,7 +7,7 @@ class Pacientes(models.Model):
     apellido = models.CharField(max_length=50)
     rut = models.IntegerField()
     fechaNacimiento = models.DateField()
-    correo =models.EmailField()
+    correo = models.EmailField()
 
     def __str__(self):
         return f'{self.nombre} {self.apellido}'

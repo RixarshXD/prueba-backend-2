@@ -23,3 +23,10 @@ def registroCita(request):
             return listaCitas(request)
     data = {'form': form}
     return render(request,'CitasMedicas/registrarCitaMedica.html',data)
+
+def eliminarCita(request,id):
+    cita = Cita.objects.get(id = id)
+    cita.delete()
+    
+    # se hace la referencia de la url en el archivo urls.py
+    return redirect('listaCitas')
