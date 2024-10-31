@@ -8,8 +8,7 @@ class Pacientes(models.Model):
     rut = models.IntegerField()
     fechaNacimiento = models.DateField()
     correo =models.EmailField()
-    
+
     def __str__(self):
-        txt = {self.nombre} + " " + {self.apellido}
-        return txt
-    
+        return f'{self.nombre} {self.apellido}'
+   

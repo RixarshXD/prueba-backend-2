@@ -4,20 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
   </head>
 
   <body>
     {% extends "index.html" %} {% block content %}
 
-    <div class="alert alert-info text-center">Listado de pacientes</div>
-
+    <div class="alert alert-info text-center">Listado de Doctores</div>
     <div class="table-responsive">
-      {% if pacientes %}
+      {% if doctores %}
+
       <table class="table table-primary">
         <thead>
           <tr>
@@ -31,24 +26,28 @@
         </thead>
 
         <tbody>
-          {% for paciente in pacientes %}
+          {% for doctor in doctores %}
+
           <tr class="">
-            <td>{{paciente.id}}</td>
-            <td>{{paciente.nombre}}</td>
-            <td>{{paciente.apellido}}</td>
-            <td>{{paciente.rut}}</td>
-            <td>{{paciente.fechaNacimiento}}</td>
-            <td>{{paciente.correo}}</td>
+            <td>{{doctor.id}}</td>
+            <td>{{doctor.nombre}}</td>
+            <td>{{doctor.apellido}}</td>
+            <td>{{doctor.rut}}</td>
+            <td>{{doctor.fechaNacimiento}}</td>
+            <td>{{doctor.correo}}</td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
+
       {% else %}
-      <div class="alert alert-info">No hay pacientes registrados</div>
+
+      <div class="alert alert-info">No hay doctores registrados</div>
+
       {% endif %}
 
       <a href="../">volver</a>
-      <a href="{% url 'registro/pacientes' %}">agregar registro</a>
+      <a href="{% url 'registro/doctores' %}">agregar registro</a>
     </div>
 
     {% endblock %}

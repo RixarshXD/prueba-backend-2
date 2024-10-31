@@ -5,5 +5,5 @@ from .views import listaCitas, registroCita
 
 urlpatterns = [
     path('', listaCitas, name='listaCitas'),
-    path('registro/', registroCita, name='registro'),
+    path('registro/', registroCita, name='registro/citas'),
 ]

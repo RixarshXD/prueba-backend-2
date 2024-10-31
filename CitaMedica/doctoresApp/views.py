@@ -1,22 +1,38 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Doctor
+from .forms import FormDoctor
 
 # Create your views here.
 
-
-
-# apartado doctores
 def listadoDoctores(request):
     doctores = Doctor.objects.all()
     data = {'doctores': doctores}
-    return render(request,'listadoDoctores.html', data)
+    return render(request,'Doctores/listadoDoctores.html', data)
 
-def registroDoctores(request):
-    return render(request,'registroDoctores.html')
+def registrarDoctores(request):
+    form = FormDoctor()
+    if request.method == 'POST':
+        form = FormDoctor(request.POST)
+        if form.is_valid():
+            form.save()
+            return listadoDoctores(request)
+    data = {'form': form}
+    return render(request,'Doctores/registrarDoctores.html', data)
 
-def eliminarDoctores(request):
-    return render(request,'eliminarDoctores.html')
 
-def actualizarDoctores(request):
-    return render(request,'actualizarDoctores.html')
+def eliminarDoctores(request, id):
+    doctores = Doctor.objects.get(id = id)
+    doctores.delete()
+    return redirect('Doctores/listadoDoctores.html')
+
+def actualizarDoctores(request, id):
+    doctores = Doctor.objects.get(id=id)
+    form = FormDoctor(instance=doctores)
+    if request.method == 'POST':
+        form = FormDoctor(request.POST, instance=doctores)
+        if form.is_valid():
+            form.save()
+            return listadoDoctores(request)
+    data = {'form': form}
+    return render(request,'Doctores/registrarDoctores.html', data)
 

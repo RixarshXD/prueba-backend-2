@@ -11,5 +11,5 @@ class Doctor(models.Model):
     correo = models.EmailField()
     
     def __str__(self):
-        txt = {self.nombre} + " " + {self.apellido}
-        return txt
+        return f'{self.nombre} {self.apellido}'
+   

@@ -8,25 +8,29 @@ class FormCitas(forms.ModelForm):
         model = Cita
         fields = '__all__'
         widgets = {
-            'horaCita': forms.TimeInput(
-                attrs={'class': 'form-control',
-                       'type': 'time',
-                       'placeholder': 'Hora de la cita'}),
+              'horaCita': forms.TimeInput(
+                     attrs={'class': 'form-control',
+                            'type': 'time',
+                            'placeholder': 'Hora de la cita'}),
             
-            'fechaCita': forms.DateInput(
-                    attrs={'class': 'form-control',
+              'fechaCita': forms.DateInput(
+                     attrs={'class': 'form-control',
                            'type': 'date',
                            'initial': '31-12-2024'}),
             
-            'diagnostico': forms.TextInput(
-                    attrs={'class': 'form-control',
+              'diagnostico': forms.TextInput(
+                     attrs={'class': 'form-control',
                            'placeholder': 'Diagnostico'}),
             
-            'motivo': forms.TextInput(
-                    attrs={'class': 'form-control',
+              'motivo': forms.TextInput(
+                     attrs={'class': 'form-control',
                            'placeholder': 'Motivo de la cita'}),
             
-            'observacion': forms.TextInput(
-                    attrs={'class': 'form-control',
+              'observacion': forms.TextInput(
+                     attrs={'class': 'form-control',
                            'placeholder': 'Observaciones'}),
+              'doctor': forms.Select(
+                     attrs={'class': 'form-control'}),
+              'paciente': forms.Select(
+                     attrs={'class': 'form-control'}),
         }

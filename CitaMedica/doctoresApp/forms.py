@@ -1,31 +1,35 @@
 from django import forms
-from .models import Pacientes
+from .models import Doctor
 
 
-class FormPacientes(forms.ModelForm):
+class FormDoctor(forms.ModelForm):
+    
     class Meta:
-        model = Pacientes
+        model = Doctor
         fields = '__all__'
         widgets = {
             'nombre': forms.TextInput(
                 attrs={'class': 'form-control',
-                       'placeholder': 'Nombre del paciente'}),
+                       'placeholder': 'Nombre del doctor'}),
             
             'apellido': forms.TextInput(
                 attrs={'class': 'form-control',
-                       'placeholder': 'Apellido del paciente'}),
+                       'placeholder': 'Apellido del doctor'}),
             
             'rut': forms.NumberInput(
                 attrs={'class': 'form-control',
-                       'placeholder': 'Rut del paciente'}),
+                       'placeholder': 'Rut del doctor'}),
             
             'fechaNacimiento': forms.DateInput(
                 attrs={'class': 'form-control',
                        'type': 'date',
                        'placeholder': 'Fecha de nacimiento'}),
             
+            'especialidad': forms.TextInput(
+                attrs={'class': 'form-control',
+                       'placeholder': 'Especialidad del doctor'}),
+            
             'correo': forms.EmailInput(
                 attrs={'class': 'form-control',
-                       'placeholder': 'Correo del paciente'}),
+                       'placeholder': 'Correo del doctor'}),
         }
-
