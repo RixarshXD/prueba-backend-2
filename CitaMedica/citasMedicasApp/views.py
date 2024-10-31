@@ -30,3 +30,14 @@ def eliminarCita(request,id):
     
     # se hace la referencia de la url en el archivo urls.py
     return redirect('listaCitas')
+
+def modificarCita(request,id):
+    cita = Cita.objects.get(id = id)
+    form = FormCitas(instance = cita)
+    if request.method == 'POST':
+        form = FormCitas(request.POST, instance = cita)
+        if form.is_valid():
+            form.save()
+            return listaCitas(request)
+    data = {'form': form}
+    return render(request,'CitasMedicas/registrarCitaMedica.html',data)
