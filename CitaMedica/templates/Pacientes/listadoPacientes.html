@@ -1,58 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-</head>
+  <body>
+    {% extends "index.html" %} {% block content %}
 
-<body>
-  {% extends "index.html" %} {% block content %}
+    <div class="alert alert-info text-center">Listado de pacientes</div>
 
-  <div class="alert alert-info text-center">Listado de pacientes</div>
+    <div class="table-responsive">
+      {% if pacientes %}
+      <table class="table table-primary">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Rut</th>
+            <th scope="col">Fecha de Nacimiento</th>
+            <th scope="col">Correo</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
 
-  <div class="table-responsive">
-    {% if pacientes %}
-    <table class="table table-primary">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Rut</th>
-          <th scope="col">Fecha de Nacimiento</th>
-          <th scope="col">Correo</th>
-          <th> </th>
-          <th> </th>
-        </tr>
-      </thead>
+        <tbody>
+          {% for paciente in pacientes %}
+          <tr class="">
+            <td>{{paciente.nombre}}</td>
+            <td>{{paciente.apellido}}</td>
+            <td>{{paciente.rut}}</td>
+            <td>{{paciente.fechaNacimiento}}</td>
+            <td>{{paciente.correo}}</td>
 
-      <tbody>
-        {% for paciente in pacientes %}
-        <tr class="">
-          <td>{{paciente.nombre}}</td>
-          <td>{{paciente.apellido}}</td>
-          <td>{{paciente.rut}}</td>
-          <td>{{paciente.fechaNacimiento}}</td>
-          <td>{{paciente.correo}}</td>
+            <td>
+              <a
+                href="/pacientes/modificarPaciente/{{ paciente.id }}"
+                class="btn btn-success"
+                >Modificar</a
+              >
+            </td>
+            <td>
+              <a
+                href="/pacientes/eliminarPaciente/{{ paciente.id }}"
+                class="btn btn-danger"
+                >Eliminar</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <div class="alert alert-info">No hay pacientes registrados</div>
+      {% endif %}
 
-          <td> <a href="/pacientes/modificarPaciente/{{ paciente.id }}"class="btn btn-success">Modificar</a> </td>
-          <td> <a href="/pacientes/eliminarPaciente/{{ paciente.id }}"class="btn btn-danger">Eliminar</a> </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    {% else %}
-    <div class="alert alert-info">No hay pacientes registrados</div>
-    {% endif %}
+      <a href="../" class="btn btn-danger btn-sm">volver</a>
+      <a href="{% url 'registro/pacientes' %}" class="btn btn-info btn-sm"
+        >agregar registro</a
+      >
+    </div>
 
-    <a href="../">volver</a>
-    <a href="{% url 'registro/pacientes' %}">agregar registro</a>
-  </div>
-
-  {% endblock %}
-</body>
-
+    {% endblock %}
+  </body>
 </html>

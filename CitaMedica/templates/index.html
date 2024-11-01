@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Document{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> {% block title %}Document{% endblock %} </title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-</head>
+  <body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+      <div class="nav navbar-nav">
+        <a class="nav-item nav-link active" href="/" aria-current="page"
+          >Index</a
+        >
+        <a class="nav-item nav-link active" href="/pacientes"
+          >Listado de pacientes</a
+        >
+        <a class="nav-item nav-link active" href="/citas">Listado de citas</a>
+        <a class="nav-item nav-link active" href="/doctores"
+          >Listado de doctores</a
+        >
+      </div>
+    </nav>
 
-<body>
-  <nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="nav navbar-nav">
-      <a class="nav-item nav-link active" href="#" aria-current="page">Index</a>
-      <a class="nav-item nav-link active" href="/pacientes">Listado de pacientes</a>
-      <a class="nav-item nav-link active" href="/citas">Listado de citas</a>
-      <a class="nav-item nav-link active" href="/doctores">Listado de doctores</a>
-
-    </div>
-  </nav>
-
-  <div class="container">
-    {% block content %}
-    {% endblock %}
-  </div>
-</body>
-
+    <div class="container">{% block content %} {% endblock %}</div>
+  </body>
 </html>
