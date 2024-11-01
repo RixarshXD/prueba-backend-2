@@ -40,8 +40,8 @@
           <td>{{paciente.fechaNacimiento}}</td>
           <td>{{paciente.correo}}</td>
 
-          <td> <a href="/pacientes/modificarPaciente/{{ paciente.id }}">Modificar</a> </td>
-          <td> <a href="/pacientes/eliminarPaciente/{{ paciente.id }}">Eliminar</a> </td>
+          <td> <a href="/pacientes/modificarPaciente/{{ paciente.id }}"class="btn btn-success">Modificar</a> </td>
+          <td> <a href="/pacientes/eliminarPaciente/{{ paciente.id }}"class="btn btn-danger">Eliminar</a> </td>
         </tr>
         {% endfor %}
       </tbody>

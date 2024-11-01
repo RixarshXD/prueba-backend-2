@@ -25,7 +25,7 @@ def eliminarDoctores(request, id):
     doctores.delete()
     return redirect('ListaDoctores')
 
-def actualizarDoctores(request, id):
+def ModificarDoctores(request, id):
     doctores = Doctor.objects.get(id=id)
     form = FormDoctor(instance=doctores)
     if request.method == 'POST':
