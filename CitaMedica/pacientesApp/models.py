@@ -5,7 +5,7 @@ from django.db import models
 class Pacientes(models.Model):
     nombre =models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
-    rut = models.IntegerField()
+    rut = models.CharField(max_length=10)
     fechaNacimiento = models.DateField()
     correo = models.EmailField()
 
