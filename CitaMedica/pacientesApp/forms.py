@@ -28,14 +28,23 @@ class FormPacientes(forms.ModelForm):
                 attrs={'class': 'form-control',
                        'placeholder': 'Correo del paciente'}),
         }
-
-
-    def clean_especialidad(self):
-        especialidad = self.cleaned_data.get('especialidad')
-        if especialidad == 'Sin especialidad':
-            raise forms.ValidationError("Por favor, selecciona una especialidad.")
-        return especialidad
     
+    #Se crean validaciones para algunos campos:
+    # Validación para el 'nombre'. Solo se permiten letras.
+    def clean_nombre(self):
+        nombre = self.cleaned_data.get('nombre')
+        if not nombre.isalpha():
+            raise forms.ValidationError("Un nombre solo debe contener letras.")
+        return nombre
+
+    # Validación para el 'apellido'. Solo se permiten letras.
+    def clean_apellido(self):
+        apellido = self.cleaned_data.get('apellido')
+        if not apellido.isalpha():
+            raise forms.ValidationError("Un apellido solo debe contener letras.")
+        return apellido
+    
+    # Validación para el 'rut'. Se verifica que el RUT tenga guión y que el código verificador sea un número o 'K'.
     def clean_rut(self):
         rut = self.cleaned_data.get('rut')
         if "-" not in rut:
@@ -53,14 +62,4 @@ class FormPacientes(forms.ModelForm):
             raise forms.ValidationError("El código verificador debe ser un número o 'K'.")
         return rut
     
-    def clean_nombre(self):
-        nombre = self.cleaned_data.get('nombre')
-        if not nombre.isalpha():
-            raise forms.ValidationError("Un nombre solo debe contener letras.")
-        return nombre
 
-    def clean_apellido(self):
-        apellido = self.cleaned_data.get('apellido')
-        if not apellido.isalpha():
-            raise forms.ValidationError("Un apellido solo debe contener letras.")
-        return apellido

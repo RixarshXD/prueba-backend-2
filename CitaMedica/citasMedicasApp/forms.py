@@ -29,8 +29,10 @@ class FormCitas(forms.ModelForm):
               'observacion': forms.TextInput(
                      attrs={'class': 'form-control',
                            'placeholder': 'Observaciones'}),
+              
               'doctor': forms.Select(
                      attrs={'class': 'form-control'}),
+              
               'paciente': forms.Select(
                      attrs={'class': 'form-control'}),
         }
