@@ -53,8 +53,10 @@
 
     {% endif %}
 
-    <a href="../" class="btn btn-danger btn-sm">volver</a>
-    <a href="{% url 'registro/doctores' %}" class="btn btn-info btn-sm">agregar registro</a>
+    <div class="d-flex">
+      <a href="../" class="btn btn-danger btn-sm">volver</a>
+      <a href="{% url 'registro/doctores' %}" class="btn btn-info btn-sm ml-auto">agregar registro</a>
+    </div>
   </div>
 
   {% endblock %}
